@@ -13,6 +13,9 @@ jobs:
   post-release:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    steps:
+    permissions:
+      contents: write
+    steps:     
+      - uses: actions/checkout@v4
       - name: create release note and tag
         run: gh release create ${{ github.event.pull_request.title }} --title ${{ github.event.pull_request.title }} --generate-notes --latest --target main
