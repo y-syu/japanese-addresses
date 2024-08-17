@@ -1,11 +1,13 @@
 name: Build & Deploy to Azure (Yamato Prod)
 
 on:
-  pull_request:
+  push:
     branches:
       - main
+  pull_request:
     types:
       - closed
+
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
