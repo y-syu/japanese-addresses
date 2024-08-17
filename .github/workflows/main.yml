@@ -1,17 +1,21 @@
 name: Build & Deploy to Azure (Yamato Prod)
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-  pull_request:
     types:
       - closed
-      
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
 jobs:
   post-release:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    steps:
+    permissions:
+      contents: write
+    steps:     
+      - uses: actions/checkout@v4
       - name: create release note and tag
         run: gh release create ${{ github.event.pull_request.title }} --title ${{ github.event.pull_request.title }} --generate-notes --latest --target main
