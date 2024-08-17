@@ -6,7 +6,9 @@ on:
       - main
     types:
       - closed
-      
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
 jobs:
   post-release:
     if: github.event.pull_request.merged == true
