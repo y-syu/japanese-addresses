@@ -14,7 +14,7 @@
 
 ### ファイルフォーマット
 
-- latest.csv: CSV1234
+- latest.csv: CSV
 - latest.db: SQLite3で読み込めるバイナリ形式
 
 ### 列
